@@ -43,7 +43,7 @@ const  Login = ({navigation}) => {
 return (
     <>
         <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps={false}>
-            <Text  style={styles.logo}>Dhando</Text>
+            <Text  style={styles.logo}>प र चा</Text>
             <Input style={styles.textBox} value={userForm.phone} onChangeText={e=>activateForm(e)}
                    keyboardType={"number-pad"}  placeholder={" Enter 10 digit Mobile Number"}
                    leftIcon={<Icon name={"phone"}/>}

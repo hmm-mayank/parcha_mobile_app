@@ -5,7 +5,7 @@ export const productDetails = [
 
 ];
 
-export const apiEndPoints = `http://3.7.174.172`;
+export const apiEndPoints = `https://leaao.shop`;
 export const playSound = async () => {
   let { sound } = await Audio.Sound.createAsync(
     require("../assets/beep.mp3")
