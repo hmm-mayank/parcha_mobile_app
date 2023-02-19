@@ -128,7 +128,6 @@ td{
 }
 </style>
     <div id="top" style="text-align: center;">
-    <img src="https://myshopairport.com/wp-content/uploads/2022/03/logo-design-my-shop-04.png" width="70" height="70" />
       <div class="logo"></div>
       <div class="info"> 
         <h2>${shopSetting?.name ? shopSetting?.name : shopInfo.shopName}</h2>
