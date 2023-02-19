@@ -65,12 +65,12 @@ export const CustomOverlayProvider = ({children}:any) => {
         const hour = moment.utc(now).format('hh');
         const min = moment.utc(now).format('mm');
         const sec = moment.utc(now).format('ss');
-       
+        console.log(userMeta?.phone );
         // let imageUpload =   await axios.get('https://p266jz5q1c.execute-api.ap-south-1.amazonaws.com/uploads');
-        let filePathLocalName = `${getUser["phoneNumber"]}-${hour}${min}${sec}`.toString();
+        let filePathLocalName = `${userMeta?.phone || getUser["phoneNumber"]}-${hour}${min}${sec}`.toString();
         console.log(`https://parcha.s3.ap-south-1.amazonaws.com/${day}/${filePathLocalName}.pdf`);
         let formData = {
-            "customerPhone": getUser["phoneNumber"],
+            "customerPhone": userMeta?.phone || getUser["phoneNumber"],
             "cashierId":getUser["id"],
             "vendorId":vendorInformation.vendorId,
             "customer": userMeta,
@@ -114,7 +114,6 @@ export const CustomOverlayProvider = ({children}:any) => {
                
                 let anrafformData = new FormData();
                 anrafformData.append("file", {uri: filePath.uri, name: `${filePathLocalName}.pdf`, type: 'application/pdf'})
-               console.log(anrafformData)
                 var requestOptions = {
                     method: 'POST',
                     body: anrafformData,
@@ -122,7 +121,6 @@ export const CustomOverlayProvider = ({children}:any) => {
                         'Content-Type': 'multipart/form-data',
                       },
                   };
-                  console.log(requestOptions)
                   fetch("https://cq37fc5wuhwq3jo3i2vs2x6yb40bvgvr.lambda-url.ap-south-1.on.aws/upload", requestOptions)
                   .then(response => response.text())
                   .then(result => console.log(result))
